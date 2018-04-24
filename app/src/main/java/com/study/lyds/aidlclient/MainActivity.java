@@ -13,11 +13,12 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.study.lyds.aidlserver.IMyAidlInterface;
+import com.study.lyds.aidlserver.Person;
 
 import java.util.List;
 
 /**
- * blog: https://blog.csdn.net/liuyonglei1314/article/details/54317902
+ * CSDN：https://blog.csdn.net/liuyonglei1314/article/details/54317902
  */
 public class MainActivity extends AppCompatActivity {
     private IMyAidlInterface mService;
@@ -41,7 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 int res = mService.add(5, 10);
-                Log.e("aidlAdd",""+res);
+                Person p1 = new Person();
+                p1.setName("刘大");
+                p1.setAge(3);
+                Person p2 = new Person();
+                p2.setName("赵二");
+                p2.setAge(3);
+                Log.e("aidlAdd",""+res+" "+mService.outPerson(p1)+" "+mService.inPerson(p2)+" "+p2.toString() );
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
